@@ -1,0 +1,40 @@
+<div class="row">
+	<h1>Add New Post</h1>
+	<form id="postForm" action="/posts/add" method="POST" enctype="multipart/form-data">
+		<!-- The id will be assigned at the adding the data to our json file -->
+		<div class="form-group">
+			<label for="title">Title:</label><br>
+			<input type="text" id="title" class="form-control" name="title" required><br>
+		</div>
+
+		<div class="form-group">
+			<label for="body">Body:</label><br>
+			<textarea id="body" class="form-control" name="body"></textarea><br>
+		</div>
+
+		{{#if categories}}
+		<select class="form-control" name="category" id="category">
+			<option value="">Select Category</option>
+			<!-- Fetch and dynamically populate options-->
+			{{#each categories}}
+			<option value="{{id}}">{{category}}</option>
+			{{/each}}
+		</select>
+		{{else}}
+		<div>No Categories</div>
+		{{/if}}
+
+
+		<div class="form-group">
+			<label for="featureImage">Feature Image:</label>
+			<input type="file" id="featureImage" class="form-control-file" name="featureImage">
+		</div>
+
+		<div class="form-group">
+			<label for="published">Published:</label>
+			<input type="checkbox" id="published" class="form-check-label" name="published"><br>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Create Post</button>
+	</form>
+</div>
